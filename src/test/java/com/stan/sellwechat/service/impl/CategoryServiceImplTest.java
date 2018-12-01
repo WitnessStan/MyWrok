@@ -11,14 +11,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ProductCategoryServiceImplTest {
+public class CategoryServiceImplTest {
 
     @Autowired
-    private ProductCategoryServiceImpl productCategoryService;
+    private CategoryServiceImpl productCategoryService;
 
     @Test
     public void findOne() {

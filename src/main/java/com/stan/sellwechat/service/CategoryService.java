@@ -4,7 +4,7 @@ import com.stan.sellwechat.domain.ProductCategory;
 
 import java.util.List;
 
-public interface ProductCategoryService {
+public interface CategoryService {
 
     ProductCategory findOne(Integer categoryId);
 

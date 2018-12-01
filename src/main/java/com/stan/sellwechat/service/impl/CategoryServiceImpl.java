@@ -2,14 +2,14 @@ package com.stan.sellwechat.service.impl;
 
 import com.stan.sellwechat.domain.ProductCategory;
 import com.stan.sellwechat.repository.ProductCategoryRepository;
-import com.stan.sellwechat.service.ProductCategoryService;
+import com.stan.sellwechat.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ProductCategoryServiceImpl implements ProductCategoryService {
+public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
