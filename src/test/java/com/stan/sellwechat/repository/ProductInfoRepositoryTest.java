@@ -28,10 +28,9 @@ public class ProductInfoRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void save(){
         ProductInfo productInfo = new ProductInfo();
-        productInfo.setProductId("123456");
+        productInfo.setProductId("123457");
         productInfo.setCategoryType(30);
         productInfo.setProductDescription("测试测试");
         productInfo.setProductIcon("测试");
