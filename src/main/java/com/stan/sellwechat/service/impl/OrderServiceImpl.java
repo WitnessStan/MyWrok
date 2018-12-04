@@ -56,6 +56,7 @@ public class OrderServiceImpl implements OrderService {
             ProductInfo productInfo = productService.findOne(orderDetail.getProductId());
             //如果没有该商品则抛出自定义运行时异常
             if(productInfo == null) {
+                log.error("【创建订单】,商品号不存在,productId={}",orderDetail.getProductId());
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
             orderAmount = productInfo.getProductPrice().multiply(new BigDecimal(orderDetail.getProductQuantity())).add(orderAmount);
@@ -66,8 +67,8 @@ public class OrderServiceImpl implements OrderService {
         }
 
         OrderMaster orderMaster = new OrderMaster();
+        orderDTO.setOrderId(orderId);
         BeanUtils.copyProperties(orderDTO,orderMaster);
-        orderMaster.setOrderId(orderId);
         orderMaster.setOrderAmount(orderAmount);
         orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
         orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());

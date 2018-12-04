@@ -10,6 +10,7 @@ import com.stan.sellwechat.service.ProductService;
 import com.stan.sellwechat.utils.ResultVOUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ import java.util.Set;
  */
 @RestController
 @RequestMapping("buyer/product")
-public class BuyProductController {
+public class BuyerProductController {
 
     @Autowired
     private ProductService productService;
@@ -31,7 +32,7 @@ public class BuyProductController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public ResultVO list(){
         List<ProductInfo> productInfoList = productService.findUpAll();
         Set<Integer> categoryTypeSet = new HashSet<>();

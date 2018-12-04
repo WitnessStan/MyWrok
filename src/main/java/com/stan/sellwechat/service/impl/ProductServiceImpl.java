@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -28,7 +29,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductInfo findOne(String productId) {
-        return productInfoRepository.findById(productId).get();
+        Optional<ProductInfo> productInfo = productInfoRepository.findById(productId);
+        return productInfo.isPresent() ? productInfo.get() : null;
     }
 
     /**
