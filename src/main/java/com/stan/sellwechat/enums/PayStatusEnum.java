@@ -3,7 +3,7 @@ package com.stan.sellwechat.enums;
 import lombok.Getter;
 
 @Getter
-public enum PayStatusEnum {
+public enum PayStatusEnum implements CodeEnum{
     WAIT(0,"等待付款"),
     SUCCESS(1,"付款成功")
     ;

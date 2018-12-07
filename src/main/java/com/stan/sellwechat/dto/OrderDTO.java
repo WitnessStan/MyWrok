@@ -1,8 +1,12 @@
 package com.stan.sellwechat.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.stan.sellwechat.domain.OrderDetail;
+import com.stan.sellwechat.enums.OrderStatusEnum;
+import com.stan.sellwechat.enums.PayStatusEnum;
+import com.stan.sellwechat.utils.EnumUtil;
 import com.stan.sellwechat.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
@@ -11,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)      //如果属性为null则不返回该属性
+//@JsonInclude(JsonInclude.Include.NON_NULL)      //如果属性为null则不返回该属性  , 去yml配置文件中设置
 public class OrderDTO {
 
     /** 订单id. */
@@ -46,7 +50,7 @@ public class OrderDTO {
     @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
 
-    List<OrderDetail> orderDetailList;
+    private List<OrderDetail> orderDetailList;
 
     @Override
     public String toString() {
@@ -63,5 +67,15 @@ public class OrderDTO {
                 ", updateTime=" + updateTime +
                 ", orderDetailList=" + orderDetailList +
                 '}';
+    }
+
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum() {
+        return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum() {
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
     }
 }
