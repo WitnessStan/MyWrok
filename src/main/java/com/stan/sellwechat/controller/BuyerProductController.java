@@ -23,7 +23,7 @@ import java.util.Set;
  * RestController注解 == @Controller+@ResponseBody(返回json)
  */
 @RestController
-@RequestMapping("buyer/product")
+@RequestMapping("/buyer/product")
 public class BuyerProductController {
 
     @Autowired

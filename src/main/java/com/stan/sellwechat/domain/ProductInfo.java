@@ -1,11 +1,15 @@
 package com.stan.sellwechat.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.stan.sellwechat.enums.ProductStatusEnum;
+import com.stan.sellwechat.utils.EnumUtil;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @DynamicUpdate
@@ -31,6 +35,10 @@ public class ProductInfo {
 
     private Integer categoryType;
 
+    private Date createTime;
+
+    private Date updateTime;
+
     @Override
     public String toString() {
         return "ProductInfo{" +
@@ -43,5 +51,10 @@ public class ProductInfo {
                 ", productStatus=" + productStatus +
                 ", categoryType=" + categoryType +
                 '}';
+    }
+
+    @JsonIgnore
+    public ProductStatusEnum getProductStatusEnum() {
+        return EnumUtil.getByCode(productStatus, ProductStatusEnum.class);
     }
 }
